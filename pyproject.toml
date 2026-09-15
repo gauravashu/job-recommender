@@ -1,0 +1,27 @@
+[project]
+name = "job-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "gauravashu", email = "ashish.gaurav64@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "apify-client>=3.2.0",
+    "groq>=1.7.0",
+    "mcp[cli]<2",
+    "openai>=3.14.0",
+    "package-name>=0.1",
+    "pymupdf>=1.28.2",
+    "python-dotenv>=1.2.3",
+    "streamlit>=1.63.0",
+    "watchdog>=6.0.0",
+]
+
+[project.scripts]
+job-app = "job_app:main"
+
+[build-system]
+requires = ["uv_build>=0.12.14,<0.13.0"]
+build-backend = "uv_build"

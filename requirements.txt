@@ -1,0 +1,5 @@
+streamlit
+openapi
+pymupdf
+python-dotenv
+apify-client
