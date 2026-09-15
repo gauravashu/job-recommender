@@ -5,7 +5,7 @@ from src.helper import (
     ask_openai
 )
 
-from src.job_api import fetch_jobs
+from src.job_api import fetch_multiple_jobs
 
 
 # --------------------------------------------------
@@ -229,15 +229,20 @@ if uploaded_file:
 
 
         # Clean keywords
-        search_keywords = keywords.replace(
-            "\n",
-            " "
-        ).strip()
+        search_keywords = [
+            keyword.strip()
+            for keyword in keywords.replace("\n", "").split(",")
+            if keyword.strip()
+
+
+        ]
 
 
         st.success(
-            f"🔑 Job Search Keywords: {search_keywords}"
-        )
+
+
+           f"🔑 Job Search Keywords: {', '.join(search_keywords)}"
+)
 
 
         # --------------------------------------------------
@@ -250,11 +255,11 @@ if uploaded_file:
 
             try:
 
-                jobs = fetch_jobs(
-                    search_query=search_keywords,
+                jobs = fetch_multiple_jobs(
+                    search_queries=search_keywords,
                     location="India",
-                    rows=20,
-                    page=1
+                    rows=5,
+                    
                 )
 
             except Exception as e:
